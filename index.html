@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>فاهم - منصة تعليمية</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset & General */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background-color: #f4f7fa;
+      color: #333;
+      line-height: 1.7;
+      text-align: right;
+    }
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    /* Header */
+    header {
+      background: #003366;
+      color: white;
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      float: right;
+      font-size: 1.8rem;
+      margin: 0 20px;
+    }
+    header nav {
+      float: left;
+    }
+    header nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(to right, #003366, #0077b6);
+      color: white;
+      padding: 100px 0;
+      text-align: center;
+    }
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    .hero span {
+      color: #ffd166;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: auto;
+      font-size: 1.1rem;
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 0;
+    }
+    section h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #003366;
+      font-size: 2rem;
+    }
+
+    /* About */
+    .about p {
+      max-width: 800px;
+      margin: auto;
+      font-size: 1.1rem;
+      text-align: center;
+    }
+
+    /* Lessons */
+    .lessons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+    .lesson-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s;
+      text-decoration: none;
+      color: #333;
+    }
+    .lesson-card:hover {
+      transform: translateY(-5px);
+    }
+    .lesson-info {
+      padding: 20px;
+    }
+    .lesson-info h3 {
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+    .teacher {
+      color: #0077b6;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    .lesson-info p {
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: #e0f7fa;
+      padding: 40px 0;
+    }
+    .cta a {
+      display: inline-block;
+      margin-top: 15px;
+      padding: 10px 20px;
+      background: #0077b6;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    /* Footer */
+    footer {
+      background: #003366;
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1, header nav {
+        float: none;
+        text-align: center;
+        margin: 10px 0;
+      }
+      .hero h2 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>فاهم</h1>
+      <nav>
+        <a href="#">الرئيسية</a>
+        <a href="#lessons">الدروس</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <h2>مرحباً بك في <span>فاهم</span></h2>
+      <p>منصة تعليمية تقدم دروساً مبسطة للطلاب في المرحلة الإعدادية والثانوية مع مدرسين متميزين.</p>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="about">
+    <div class="container">
+      <h2>عن المنصة</h2>
+      <p>
+        فاهم هي منصة تعليمية مخصصة للطلاب في المرحلة الإعدادية والثانوية، وتوفر دروساً مُقدمة من مدرسين متميزين في مختلف المواد الدراسية مثل اللغة الإنجليزية، الأحياء، وعلوم الإعدادي.
+      </p>
+    </div>
+  </section>
+
+  <!-- Lessons -->
+  <section id="lessons" class="lessons">
+    <div class="container">
+      <h2>الدروس التعليمية</h2>
+      <div class="lessons-grid">
+        <a href="lesson.html" class="lesson-card">
+          <div class="lesson-info">
+            <h3>اللغة الإنجليزية</h3>
+            <div class="teacher">دكتورة بسمة عبد المجيد</div>
+            <p>دروس شاملة في القواعد، المفردات، والقراءة باللغة الإنجليزية للمراحل الإعدادية والثانوية.</p>
+          </div>
+        </a>
+
+        <a href="lesson.html" class="lesson-card">
+          <div class="lesson-info">
+            <h3>علم الأحياء</h3>
+            <div class="teacher">دكتور علي نسيم</div>
+            <p>دروس تفاعلية في علم الأحياء تغطي موضوعات مثل الخلايا، الأنظمة الحيوية، والوراثة.</p>
+          </div>
+        </a>
+
+        <a href="lesson.html" class="lesson-card">
+          <div class="lesson-info">
+            <h3>علوم الإعدادي</h3>
+            <div class="teacher">مستر أسامة المحلاوي</div>
+            <p>دروس مبسطة في علوم المرحلة الإعدادية تشمل الفيزياء، الكيمياء، والعلوم العامة.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="cta">
+    <div class="container">
+      <h2>ابدأ التعلم الآن!</h2>
+      <a href="#lessons">تصفح الدروس</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>© 2026 فاهم - جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+</body>
+</html>
