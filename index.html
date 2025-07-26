@@ -4,167 +4,322 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>فاهم - منصة تعليمية</title>
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <!-- أنيميشن -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <style>
-    /* Reset & General */
+    /* ========================================
+       1. Reset عام
+       ======================================== */
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
+
     body {
       font-family: 'Tajawal', sans-serif;
-      background-color: #f4f7fa;
-      color: #333;
-      line-height: 1.7;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      color: #2c3e50;
+      line-height: 1.8;
       text-align: right;
+      overflow-x: hidden;
     }
+
     .container {
       width: 90%;
       max-width: 1100px;
       margin: auto;
+      padding: 0 15px;
     }
 
-    /* Header */
+    /* ========================================
+       2. الهيدر (شفاف مع تأثير)
+       ======================================== */
     header {
-      background: #003366;
+      background: rgba(44, 62, 80, 0.95);
       color: white;
       padding: 1rem 0;
       position: sticky;
       top: 0;
       z-index: 1000;
-    }
-    header h1 {
-      float: right;
-      font-size: 1.8rem;
-      margin: 0 20px;
-    }
-    header nav {
-      float: left;
-    }
-    header nav a {
-      color: white;
-      margin-left: 20px;
-      text-decoration: none;
-      font-weight: bold;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
     }
 
-    /* Hero */
-    .hero {
-      background: linear-gradient(to right, #003366, #0077b6);
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.9rem;
+      font-weight: 700;
+      margin: 0;
+      color: #a29bfe;
+    }
+
+    header nav a {
       color: white;
-      padding: 100px 0;
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      position: relative;
+      transition: color 0.3s;
+    }
+
+    header nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      right: 0;
+      width: 0;
+      height: 2px;
+      background: #a29bfe;
+      transition: width 0.3s ease;
+    }
+
+    header nav a:hover {
+      color: #a29bfe;
+    }
+
+    header nav a:hover::after {
+      width: 100%;
+    }
+
+    /* ========================================
+       3. القسم الترحيبي (مع حركة)
+       ======================================== */
+    .hero {
+      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
+      color: white;
+      padding: 120px 0;
       text-align: center;
+      position: relative;
+      overflow: hidden;
     }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+      background-size: cover;
+      opacity: 0.3;
+    }
+
     .hero h2 {
-      font-size: 2.5rem;
-      margin-bottom: 10px;
+      font-size: 3rem;
+      margin-bottom: 15px;
+      opacity: 0;
+      animation: fadeInDown 1s ease forwards;
     }
+
     .hero span {
-      color: #ffd166;
+      color: #fdcb6e;
     }
+
     .hero p {
       max-width: 700px;
       margin: auto;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: fadeInUp 1s ease 0.5s forwards;
     }
 
-    /* Sections */
+    /* ========================================
+       4. عن المنصة
+       ======================================== */
     section {
-      padding: 60px 0;
+      padding: 80px 0;
     }
+
     section h2 {
       text-align: center;
-      margin-bottom: 30px;
-      color: #003366;
-      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #6c5ce7;
+      font-size: 2.1rem;
+      font-weight: 700;
     }
 
-    /* About */
     .about p {
       max-width: 800px;
       margin: auto;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       text-align: center;
+      color: #555;
+      line-height: 1.9;
     }
 
-    /* Lessons */
+    /* ========================================
+       5. الدروس التعليمية (مع حركة عند التمرير)
+       ======================================== */
     .lessons-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 20px;
     }
+
     .lesson-card {
       background: white;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
       overflow: hidden;
-      transition: transform 0.3s;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       text-decoration: none;
-      color: #333;
-    }
-    .lesson-card:hover {
-      transform: translateY(-5px);
-    }
-    .lesson-info {
-      padding: 20px;
-    }
-    .lesson-info h3 {
-      margin-bottom: 10px;
-      font-size: 1.3rem;
-    }
-    .teacher {
-      color: #0077b6;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-    .lesson-info p {
-      font-size: 0.95rem;
-      line-height: 1.4;
+      opacity: 0;
+      transform: translateY(30px);
+      border: 1px solid #e0e0e0;
     }
 
-    /* CTA */
+    .lesson-card.animate__animated {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .lesson-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(108, 92, 231, 0.2);
+      border-color: #a29bfe;
+    }
+
+    .lesson-info {
+      padding: 25px;
+    }
+
+    .lesson-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #2d3436;
+      transition: color 0.3s;
+    }
+
+    .teacher {
+      color: #6c5ce7;
+      font-weight: bold;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+    }
+
+    .lesson-info p {
+      font-size: 1rem;
+      color: #7f8c8d;
+      line-height: 1.6;
+    }
+
+    /* ========================================
+       6. دعوة للعمل (CTA)
+       ======================================== */
     .cta {
       text-align: center;
-      background: #e0f7fa;
-      padding: 40px 0;
+      background: #6c5ce7;
+      color: white;
+      padding: 60px 0;
+      margin: 0;
     }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: white;
+    }
+
     .cta a {
       display: inline-block;
-      margin-top: 15px;
-      padding: 10px 20px;
-      background: #0077b6;
-      color: white;
+      padding: 14px 30px;
+      background: #fdcb6e;
+      color: #2d3436;
       text-decoration: none;
-      border-radius: 5px;
+      border-radius: 50px;
       font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(253, 203, 110, 0.4);
+      transition: all 0.3s ease;
     }
 
-    /* Footer */
+    .cta a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 7px 20px rgba(253, 203, 110, 0.6);
+    }
+
+    /* ========================================
+       7. التذييل (Footer)
+       ======================================== */
     footer {
-      background: #003366;
-      color: white;
+      background: #2d3436;
+      color: #dfe6e9;
       text-align: center;
-      padding: 20px 0;
-      font-size: 0.9rem;
+      padding: 25px 0;
+      font-size: 0.95rem;
     }
 
-    /* Responsive */
+    /* ========================================
+       8. الاستجابة (Responsive)
+       ======================================== */
     @media (max-width: 768px) {
-      header h1, header nav {
-        float: none;
+      header .container {
+        flex-direction: column;
         text-align: center;
-        margin: 10px 0;
       }
+
+      header h1 {
+        margin-bottom: 10px;
+      }
+
+      header nav a {
+        margin: 5px 10px;
+      }
+
       .hero h2 {
-        font-size: 2rem;
+        font-size: 2.3rem;
+      }
+
+      .hero p {
+        font-size: 1.1rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+
+    /* ========================================
+       9. تأثيرات الحركة (Animations)
+       ======================================== */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- Header -->
+  <!-- 1. الهيدر -->
   <header>
     <div class="container">
       <h1>فاهم</h1>
@@ -175,7 +330,7 @@
     </div>
   </header>
 
-  <!-- Hero -->
+  <!-- 2. القسم الترحيبي -->
   <section class="hero">
     <div class="container">
       <h2>مرحباً بك في <span>فاهم</span></h2>
@@ -183,7 +338,7 @@
     </div>
   </section>
 
-  <!-- About -->
+  <!-- 3. عن المنصة -->
   <section id="about" class="about">
     <div class="container">
       <h2>عن المنصة</h2>
@@ -193,12 +348,12 @@
     </div>
   </section>
 
-  <!-- Lessons -->
+  <!-- 4. الدروس التعليمية -->
   <section id="lessons" class="lessons">
     <div class="container">
       <h2>الدروس التعليمية</h2>
       <div class="lessons-grid">
-        <a href="lesson.html" class="lesson-card">
+        <a href="lesson.html" class="lesson-card" style="animation-delay: 0.2s">
           <div class="lesson-info">
             <h3>اللغة الإنجليزية</h3>
             <div class="teacher">دكتورة بسمة عبد المجيد</div>
@@ -206,7 +361,7 @@
           </div>
         </a>
 
-        <a href="lesson.html" class="lesson-card">
+        <a href="lesson.html" class="lesson-card" style="animation-delay: 0.4s">
           <div class="lesson-info">
             <h3>علم الأحياء</h3>
             <div class="teacher">دكتور علي نسيم</div>
@@ -214,7 +369,7 @@
           </div>
         </a>
 
-        <a href="lesson.html" class="lesson-card">
+        <a href="lesson.html" class="lesson-card" style="animation-delay: 0.6s">
           <div class="lesson-info">
             <h3>علوم الإعدادي</h3>
             <div class="teacher">مستر أسامة المحلاوي</div>
@@ -225,7 +380,7 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
+  <!-- 5. دعوة للتعلم -->
   <section class="cta">
     <div class="container">
       <h2>ابدأ التعلم الآن!</h2>
@@ -233,12 +388,33 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- 6. التذييل -->
   <footer>
     <div class="container">
       <p>© 2026 فاهم - جميع الحقوق محفوظة</p>
     </div>
   </footer>
+
+  <!-- 7. JavaScript بسيط لتأثير التمرير (Scroll Reveal) -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const lessonCards = document.querySelectorAll('.lesson-card');
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('animate__animated');
+            }, entry.target.style.animationDelay || 0);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      lessonCards.forEach(card => {
+        observer.observe(card);
+      });
+    });
+  </script>
 
 </body>
 </html>
