@@ -3,38 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>الدرس - فاهم</title>
-  <link href=" https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+  <title>الدرس قادم قريبًا - فاهم</title>
+  <!-- خط عربي -->
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Tajawal', sans-serif;
-      background: #003366;
+      background: linear-gradient(135deg, #6c5ce7 0%, #a29bfe 100%);
       color: white;
       text-align: center;
-      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px;
     }
+
+    .container {
+      max-width: 800px;
+      margin: auto;
+    }
+
     h1 {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       margin-bottom: 20px;
+      animation: fadeIn 1.5s ease-in-out;
     }
+
     p {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       margin-bottom: 30px;
+      opacity: 0;
+      animation: slideUp 1s ease-in-out 0.5s forwards;
     }
-    a {
+
+    .btn {
       display: inline-block;
-      padding: 10px 20px;
-      background: #ffd166;
-      color: #003366;
+      padding: 14px 30px;
+      background: #fdcb6e;
+      color: #2d3436;
       text-decoration: none;
-      border-radius: 5px;
       font-weight: bold;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(253, 203, 110, 0.4);
+      transition: all 0.3s ease;
+      opacity: 0;
+      animation: slideUp 1s ease-in-out 0.8s forwards;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(253, 203, 110, 0.6);
+    }
+
+    footer {
+      margin-top: 60px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 <body>
-  <h1>الدروس قادمة قريبًا!</h1>
-  <p>نعمل بجد لتقديم أفضل تجربة تعليمية لك. ترقب قريبًا.</p>
-  <a href="index.html">العودة للرئيسية</a>
+
+  <div class="container">
+    <h1>الدرس قادم قريبًا! 📚</h1>
+    <p>نعمل بجد لتقديم أفضل تجربة تعليمية لك. ترقب قريبًا دروسًا مسجلة، تفاعلات، وتمارين عملية!</p>
+    <a href="index.html" class="btn">العودة للرئيسية</a>
+  </div>
+
+  <footer>
+    &copy; 2026 فاهم - جميع الحقوق محفوظة
+  </footer>
+
 </body>
 </html>
